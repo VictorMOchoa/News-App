@@ -8,6 +8,7 @@ public class Article {
     private String webUrl;
     private String webTitle;
     private String sectionName;
+    private String webPublicationDate;
 
     public Article() {
     }
@@ -36,12 +37,21 @@ public class Article {
         this.sectionName = sectionName;
     }
 
+    public String getWebPublicationDate() {
+        return webPublicationDate;
+    }
+
+    public void setWebPublicationDate(String webPublicationDate) {
+        this.webPublicationDate = webPublicationDate;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
                 "webUrl='" + webUrl + '\'' +
                 ", webTitle='" + webTitle + '\'' +
                 ", sectionName='" + sectionName + '\'' +
+                ", publicationDate='" + webPublicationDate + '\'' +
                 '}';
     }
 }

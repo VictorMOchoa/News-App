@@ -28,11 +28,13 @@ public class NewsArticleAdapter extends RecyclerView.Adapter<NewsArticleAdapter.
     public class NewsArticleViewHolder extends RecyclerView.ViewHolder  {
         TextView articleTitleTextView;
         TextView categoryTextView;
+        TextView dateTextView;
         ConstraintLayout itemLayout;
         public NewsArticleViewHolder(View view) {
             super(view);
             articleTitleTextView = view.findViewById(R.id.article_title_tv);
             categoryTextView = view.findViewById(R.id.category_tv);
+            dateTextView = view.findViewById(R.id.date_tv);
             itemLayout = view.findViewById(R.id.tile_layout);
         }
     }
@@ -54,6 +56,7 @@ public class NewsArticleAdapter extends RecyclerView.Adapter<NewsArticleAdapter.
     public void onBindViewHolder(NewsArticleViewHolder holder, final int position) {
         holder.articleTitleTextView.setText(articles.get(position).getWebTitle());
         holder.categoryTextView.setText(articles.get(position).getSectionName());
+        holder.dateTextView.setText(articles.get(position).getWebPublicationDate());
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -30,9 +30,8 @@ public class QueryUtils {
 
         URL apiEndpoint = createAPIEndpointURL(url);
         String response = makeAPIRequest(apiEndpoint);
-        List<Article> articles = transformJsonToArticlesList(response);
-        System.out.println(articles);
-        return articles;
+
+        return transformJsonToArticlesList(response);
     }
 
     private static List<Article> transformJsonToArticlesList(String response) {
