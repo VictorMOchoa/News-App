@@ -19,7 +19,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 
 public class QueryUtils {
@@ -42,7 +41,7 @@ public class QueryUtils {
         try {
             JSONObject object = new JSONObject(response);
             JSONArray results = object.getJSONObject("response").getJSONArray("results");
-            String resultsNode = mapper.writeValueAsString(results);
+            String resultsNode = results.toString();
             articles = mapper.readValue(resultsNode, new TypeReference<List<Article>>(){});
         } catch (JSONException | JsonProcessingException e) {
             e.printStackTrace();

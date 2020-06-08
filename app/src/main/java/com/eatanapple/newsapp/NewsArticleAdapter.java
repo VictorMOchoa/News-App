@@ -1,14 +1,18 @@
 package com.eatanapple.newsapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.eatanapple.newsapp.dto.Article;
 
 import java.util.List;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class NewsArticleAdapter extends RecyclerView.Adapter<NewsArticleAdapter.NewsArticleViewHolder> {
@@ -22,16 +26,14 @@ public class NewsArticleAdapter extends RecyclerView.Adapter<NewsArticleAdapter.
     }
 
     public class NewsArticleViewHolder extends RecyclerView.ViewHolder  {
-//        TextView attractionNameTextView;
-//        TextView addressTextView;
-//        TextView hoursTextView;
-//        ImageView locationImageView;
+        TextView articleTitleTextView;
+        TextView categoryTextView;
+        ConstraintLayout itemLayout;
         public NewsArticleViewHolder(View view) {
             super(view);
-//            attractionNameTextView = view.findViewById(R.id.attraction_name_tv);
-//            addressTextView = view.findViewById(R.id.address_tv);
-//            hoursTextView = view.findViewById(R.id.hours_tv);
-//            locationImageView = view.findViewById(R.id.event_iv);
+            articleTitleTextView = view.findViewById(R.id.article_title_tv);
+            categoryTextView = view.findViewById(R.id.category_tv);
+            itemLayout = view.findViewById(R.id.tile_layout);
         }
     }
 
@@ -49,12 +51,17 @@ public class NewsArticleAdapter extends RecyclerView.Adapter<NewsArticleAdapter.
 
 
     @Override
-    public void onBindViewHolder(NewsArticleViewHolder holder, int position) {
-//        holder.attractionNameTextView.setText(attractions.get(position).getName());
-//        holder.addressTextView.setText(attractions.get(position).getLocation());
-//        holder.hoursTextView.setText(attractions.get(position).getHours());
-//        Drawable drawable = context.getResources().getDrawable(attractions.get(position).getPictureResourceId());
-//        holder.locationImageView.setImageDrawable(drawable);
+    public void onBindViewHolder(NewsArticleViewHolder holder, final int position) {
+        holder.articleTitleTextView.setText(articles.get(position).getWebTitle());
+        holder.categoryTextView.setText(articles.get(position).getSectionName());
+        holder.itemLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri articleURI = Uri.parse(articles.get(position).getWebUrl());
+                Intent intent = new Intent(Intent.ACTION_VIEW, articleURI);
+                context.startActivity(intent);
+            }
+        });
     }
 
 

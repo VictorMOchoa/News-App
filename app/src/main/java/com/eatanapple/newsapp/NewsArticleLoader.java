@@ -6,8 +6,6 @@ import com.eatanapple.newsapp.dto.Article;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
 
 public class NewsArticleLoader extends AsyncTaskLoader<List<Article>> {
